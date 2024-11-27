@@ -1,0 +1,3 @@
+name = "blog-server"
+main = "src/index.ts"
+compatibility_date = "2023-06-13"

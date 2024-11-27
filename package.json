@@ -1,0 +1,21 @@
+{
+  "name": "blog-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev --port 4040 --ip 127.0.0.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hono": "^4.6.12"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "wrangler": "^3.90.0"
+  }
+}
