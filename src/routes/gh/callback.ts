@@ -1,4 +1,4 @@
-import type {Context} from 'hono';
+import type { Context } from 'hono';
 
 /**
  * GithubApp callback 接口
@@ -82,11 +82,9 @@ export default async function (c: Context) {
 
   let exchangeJson = await exchangeResp.json();
 
-  let redirectedParams = new URLSearchParams({
-    access_token: exchangeJson.access_token,
-    scope: exchangeJson.scope,
-    token_type: exchangeJson.token_type,
-  });
-
-  return c.redirect(`${r}?${redirectedParams}`, 307);
+  const urlObj = new URL(r);
+  const searchParams = urlObj.searchParams;
+  searchParams.set('gh_access_token', exchangeJson.access_token);
+  const url = `${urlObj.origin}?${searchParams.toString()}`;
+  return c.redirect(url, 307);
 }
