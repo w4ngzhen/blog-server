@@ -86,6 +86,9 @@ export default async function (c: Context) {
   const searchParams = urlObj.searchParams;
   searchParams.set('gh_access_token', exchangeJson.access_token);
   const url = `${urlObj.origin}?${searchParams.toString()}`;
-  c.header('Set-Cookie', `gh_access_token=${exchangeJson.access_token}`);
+  c.header(
+    'Set-Cookie',
+    `gh_access_token=${exchangeJson.access_token}; HttpOnly`,
+  );
   return c.redirect(url, 302);
 }
